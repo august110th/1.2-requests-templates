@@ -30,7 +30,6 @@ print(DATA['omlet'])
 #   }
 # }
 
-
 def recipes_view(request):
 
     context = {
