@@ -1,5 +1,5 @@
 from django.shortcuts import render
-import requests
+from django.http import HttpResponse
 
 DATA = {
     'omlet': {
@@ -17,25 +17,48 @@ DATA = {
         'сыр, ломтик': 1,
         'помидор, ломтик': 1,
     },
-    # можете добавить свои рецепты ;)
+
 }
-print(DATA['omlet'])
-# Напишите ваш обработчик. Используйте DATA как источник данных
-# Результат - render(request, 'calculator/index.html', context)
-# В качестве контекста должен быть передан словарь с рецептом:
-# context = {
-#   'recipe': {
-#     'ингредиент1': количество1,
-#     'ингредиент2': количество2,
-#   }
-# }
 
-def recipes_view(request):
-
+def omlet_view(request):
+    servings = request.GET.get('servings', 1)
     context = {
-      'recipe': {
-        'ingredient1': amount1,
-        'ingredient2': amount2,
-      }
+            'recipe': {
+                'яйца, шт': 2 * int(servings),
+                'молоко, л': 0.1 * int(servings),
+                'соль, ч.л.': 0.5 * int(servings)
+            }
     }
-    return render(request, "calculator/index.html", context)
+    return render(request, 'calculator/index.html', context)
+
+def pasta_view(request):
+    servings = request.GET.get('servings', 1)
+    context = {
+            'recipe': {
+                'макароны, г': 0.3 * int(servings),
+                'сыр, г': 0.05 * int(servings)
+            }
+    }
+    return render(request, 'calculator/index.html', context)
+
+
+def buter_view(request):
+    servings = request.GET.get('servings', 1)
+    context = {
+            'recipe': {
+                'хлеб, ломтик': 1 * int(servings),
+                'колбаса, ломтик': 1 * int(servings),
+                'сыр, ломтик': 1 * int(servings),
+                'помидор, ломтик': 1 * int(servings)
+            }
+    }
+    return render(request, 'calculator/index.html', context)
+
+def home_view(request):
+    x = "Доступны рецепты:"
+    return HttpResponse(x)
+
+
+def page_not_found(request):
+    response = render(request, '404.html')
+    return response
