@@ -54,11 +54,15 @@ def buter_view(request):
     }
     return render(request, 'calculator/index.html', context)
 
+# def home_view(request):
+#     x = "Доступны рецепты:"
+#     return HttpResponse(x)
 def home_view(request):
-    x = "Доступны рецепты:"
-    return HttpResponse(x)
+    # x = 'Доступны рецепты'
+    context = DATA
+    return render(request, 'calculator/home.html')
 
 
 def page_not_found(request):
-    response = render(request, '404.html')
+    response = render(request, 'calculator/404.html')
     return response
