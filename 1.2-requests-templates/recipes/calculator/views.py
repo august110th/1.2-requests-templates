@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
 DATA = {
     'omlet': {
@@ -54,14 +53,9 @@ def buter_view(request):
     }
     return render(request, 'calculator/index.html', context)
 
-# def home_view(request):
-#     x = "Доступны рецепты:"
-#     return HttpResponse(x)
 def home_view(request):
-    # x = 'Доступны рецепты'
-    context = DATA
-    return render(request, 'calculator/home.html')
-
+    context = {'new_dict': DATA}
+    return render(request, 'calculator/home.html', context)
 
 def page_not_found(request):
     response = render(request, 'calculator/404.html')

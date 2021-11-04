@@ -2,14 +2,11 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Рецепты</title>
 </head>
 <body>
-
-<p>{{DATA}}</p>
-
-<!--{% for i in DATA %}-->
-<!--    <p>{{i}}</p>-->
-<!--{% endfor %}-->
+<p>Доступны рецепты:</p>
+{% for key in new_dict.keys %}
+<p>{{key}}</p>
+{% endfor %}
 </body>
-</html>

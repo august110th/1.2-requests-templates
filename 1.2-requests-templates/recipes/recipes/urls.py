@@ -6,5 +6,4 @@ urlpatterns = [
     path('omlet/', omlet_view, name='omlet'),
     path('buter/', buter_view, name='buter'),
     path('', home_view, name='home')
-
 ]
